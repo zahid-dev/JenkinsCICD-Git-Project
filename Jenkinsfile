@@ -3,6 +3,7 @@ pipeline {
   stages {
     stage('build') {
       when {
+                  sh 'echo $params.current_status'
                   expression { return params.current_status == "closed" && params.merged == true }
               }
       steps {
