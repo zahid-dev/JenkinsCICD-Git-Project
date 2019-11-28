@@ -4,7 +4,7 @@ pipeline {
     stage('build') {
       when {
                   
-                  expression { return params.current_status == "closed" && params.merged == true }
+                  expression { return current_status == "closed" && merged == true }
               }
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
