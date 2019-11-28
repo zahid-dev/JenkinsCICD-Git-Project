@@ -16,7 +16,7 @@ pipeline {
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
         sh 'echo "this is"'  
-        sh 'echo $current_status'
+        //sh 'echo $current_status'
         sh 'python test.py'
         }
       }
