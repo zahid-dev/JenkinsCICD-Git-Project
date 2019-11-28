@@ -21,14 +21,14 @@ pipeline {
           }
         success {
             emailext (
-                to: zahid.shakeel@outlook.com; zahid.shakeel@emumba.com,
+                to: "zahid.shakeel@outlook.com"; "zahid.shakeel@emumba.com",
                 subject: "SUCCESS",
                 body: "SUCCESS!"
             )
         }
         failure {
 			emailext (
-                to: zahiddev.shakeel@gmail.com,
+                to: "zahiddev.shakeel@gmail.com",
                 subject: "FAILURE",
                 body: "FAILURE!"
             )
