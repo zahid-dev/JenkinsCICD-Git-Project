@@ -2,9 +2,9 @@ pipeline {
   agent { docker { image 'python:3.7.4' } }
   stages {
     stage('build') {
-      when {
+      /*when {
                   expression { return params.current_status == "closed" && params.merged == true }
-              }
+              }*/
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
           sh "echo ${params.current_status}"
