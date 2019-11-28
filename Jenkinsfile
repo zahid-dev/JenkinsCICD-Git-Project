@@ -8,8 +8,8 @@ pipeline {
               }*/
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
-          sh 'echo "params are: ${params.current_status}"'
-          sh 'echo "params are: ${params.merged}"'
+          sh "echo ${params.current_status}"
+          sh "echo ${params.merged}"
         sh 'pip install --user -r requirements.txt'
         }
       }
