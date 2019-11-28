@@ -4,7 +4,7 @@ pipeline {
     stage('build') {
       when {
                   
-                  expression { return current_status == "closed" && merged == true }
+                  expression { return params.current_status == "closed" && params.merged == true }
               }
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
@@ -16,7 +16,7 @@ pipeline {
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
         sh 'echo "this is"'  
-        //sh 'echo $current_status'
+        sh 'echo $params.current_status'
         sh 'python test.py'
         }
       }
