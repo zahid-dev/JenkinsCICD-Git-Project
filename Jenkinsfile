@@ -8,7 +8,7 @@ pipeline {
               }*/
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
-          sh "echo ${current_status}"
+          sh "echo ${params.ccurrent_status}"
           sh "echo ${params.merged}"
         sh 'pip install --user -r requirements.txt'
         }
