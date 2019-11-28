@@ -8,7 +8,7 @@ pipeline {
         }
       }
     }
-    stage('test') {
+    stage('unittest') {
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
         sh 'python test.py'
@@ -19,10 +19,18 @@ pipeline {
           withEnv(["HOME=${env.WORKSPACE}"]) {
           junit 'test-reports/*.xml'
           }
-
         } 
       }  
     }
-    
+    stage('functionaltest') {
+      when {
+        expression { return params.current_status == "closed" && params.merged == true }
+      }
+      steps {
+        withEnv(["HOME=${env.WORKSPACE}"]) {
+        sh 'curl localhost:5000'
+        }
+      }
+    }
   }
 }
