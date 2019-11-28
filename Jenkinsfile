@@ -19,7 +19,13 @@ pipeline {
           withEnv(["HOME=${env.WORKSPACE}"]) {
           junit 'test-reports/*.xml'
           }
-        success {
+
+        } 
+      }  
+    }
+  }
+	post {
+		        success {
             emailext (
                 to: "zahid.shakeel@outlook.com; zahid.shakeel@emumba.com",
                 subject: "SUCCESS",
@@ -33,8 +39,5 @@ pipeline {
                 body: "FAILURE!"
             )
         }
-        } 
-      }  
-    }
-  }
+	}
 }
