@@ -8,8 +8,8 @@ pipeline {
               }*/
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
-          sh 'echo ${params.current_status}'
-          sh 'echo ${params.merged}'
+          sh 'echo "${params.current_status}"'
+          sh 'echo "${params.merged}"'
         sh 'pip install --user -r requirements.txt'
         }
       }
@@ -17,8 +17,6 @@ pipeline {
     stage('test') {
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
-        sh 'echo "this is"'  
-        sh 'echo $params.current_status'
         sh 'python test.py'
         }
       }
