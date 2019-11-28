@@ -4,9 +4,6 @@ pipeline {
     stage('build') {
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
-          sh "echo ${params.current_status}"
-          sh "echo ${params.merged}"
-          sh "echo $payload"
         sh 'pip install --user -r requirements.txt'
         }
       }
