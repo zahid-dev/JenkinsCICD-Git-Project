@@ -10,7 +10,7 @@ pipeline {
         sh 'apt update -y'
         sh 'apt upgrade -y'
         sh 'apt install -y python3 python3-pip'
-        sh 'pip install --user -r requirements.txt'
+        sh 'pip3 install --user -r requirements.txt'
         }
       }
     }
