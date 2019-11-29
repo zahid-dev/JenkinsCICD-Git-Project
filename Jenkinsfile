@@ -4,7 +4,7 @@ pipeline {
     stage('build') {
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
-        sh 'sudo apt install -y python python-pip'
+        sh 'apt install -y python python-pip'
         sh 'pip install --user -r requirements.txt'
         }
       }
