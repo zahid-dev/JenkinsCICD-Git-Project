@@ -9,7 +9,7 @@ pipeline {
         withEnv(["HOME=${env.WORKSPACE}"]) {
         sh 'apt update -y'
         sh 'apt upgrade -y'
-        sh 'apt install -y python3 python3-pip'
+        sh 'apt install -y python3 python3-pip curl'
         sh 'pip3 install --user -r requirements.txt'
         }
       }
