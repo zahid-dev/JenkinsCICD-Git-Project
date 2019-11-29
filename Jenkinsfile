@@ -9,7 +9,7 @@ pipeline {
         withEnv(["HOME=${env.WORKSPACE}"]) {
         sh 'apt update -y'
         sh 'apt upgrade -y'
-        sh 'apt install -y python python-pip'
+        sh 'apt install -y python3 python3-pip'
         sh 'pip install --user -r requirements.txt'
         }
       }
@@ -17,7 +17,7 @@ pipeline {
     stage('unittest') {
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
-        sh 'python test.py'
+        sh 'python3 test.py'
         }
       }
       post {
@@ -34,7 +34,7 @@ pipeline {
       }
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
-        sh 'nohup python app.py &'  
+        sh 'nohup python3 app.py &'  
         sh 'curl localhost:5000'
         }
       }
