@@ -1,9 +1,13 @@
 pipeline {
-  agent any
+  agent { docker { 
+    image 'ubuntu:latest'
+    args '-u root:sudo -v withEnv(["HOME=${env.WORKSPACE}"])' 
+    } }
   stages {
     stage('build') {
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
+        sh 'apt install -y python python-pip'
         sh 'pip install --user -r requirements.txt'
         }
       }
@@ -28,7 +32,7 @@ pipeline {
       }
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
-        sh 'nohup python /path/to/test.py &'  
+        sh 'nohup python app.py &'  
         sh 'curl localhost:5000'
         }
       }
