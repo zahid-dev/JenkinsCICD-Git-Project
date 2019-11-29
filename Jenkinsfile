@@ -28,6 +28,7 @@ pipeline {
       }
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
+        sh 'nohup python app.py &'  
         sh 'curl localhost:5000'
         }
       }
