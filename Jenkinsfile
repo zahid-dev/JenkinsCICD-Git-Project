@@ -1,9 +1,10 @@
 pipeline {
-  agent any
+  agent { docker { image 'ubuntu:latest' } }
   stages {
     stage('build') {
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
+        sh 'sudo apt install -y python python-pip'
         sh 'pip install --user -r requirements.txt'
         }
       }
